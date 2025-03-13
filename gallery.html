@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICK SNACKS</title>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Aos Animation Css Links -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+      <!-- Go to top -->
+      <button id="backToTopBtn" class="" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Navbar -->
+    <div class="container">
+      
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-lg">
+            <div class="container-fluid">
+                <!-- Brand Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/snackslogo.png" alt="Logo">
+                </a>
+                <!-- Toggle Button for Off-Canvas -->
+                <button id="toggal" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <div class="hamburger" id="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </button>
+
+                <!-- Off-Canvas Sidebar -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel"><u>Menu</u></h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <!-- Navbar Links -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link nav_bar_active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="recipe.html">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="gallery.html">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                        <!-- Icons for Cart and Sign In -->
+                        <div class="d-flex align-items-center">
+                        
+                            <a href="Sign_in.html" style="text-decoration: none ; color: white;"> <button type="button" class="btn btn-outline-light Regester" style="width: 108px; margin: 5px;">
+                               <i class="fas fa-user"></i> Regester 
+                            </button></a>
+                            <!-- Sign In Dropdown -->
+                            <!-- <div class="dropdown navbar_icon" >
+                                 <a class="text-white dropdown-toggle" href="Sign_in.html" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                     <i class="fas fa-user"></i> Sign In
+                                 </a>
+                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                     <li><a class="dropdown-item" href="#">Login</a></li>
+                                     <li><a class="dropdown-item" href="#">Register</a></li>
+                                 </ul>
+                             </div> -->
+                            <!-- Search button -->
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                  </svg></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+<!-- header GAllery -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 gallery_header">
+                <h1 class="text-center">HOME <span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                  </svg></span> OUR GALLERY</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Gallery -->
+    <div class="container-fluid gallery">
+        <h1 class="text-center mb-4 gallery-heading" >Celebration Gallery</h1>
+        <div class="row" data-masonry='{"percentPosition": true}'>
+          <!-- Image 1 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery1.jpg" class="gallery-img" alt="Celebration Image 1">
+              <div class="card-body">
+                <p class="card-text">A small celebration with friends and family.</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Image 2 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery2.jpg" class="gallery-img" alt="Celebration Image 2">
+              <div class="card-body">
+                <p class="card-text">Birthday party decorations and snacks.</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Image 3 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery3.jpg" class="gallery-img" alt="Celebration Image 3">
+              <div class="card-body">
+                <p class="card-text">Delicious snacks prepared for a celebration.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Image 3 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery3.jpg" class="gallery-img" alt="Celebration Image 3">
+              <div class="card-body">
+                <p class="card-text">Delicious snacks prepared for a celebration.</p>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- Image 4 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery4.jpg" class="gallery-img" alt="Celebration Image 4">
+              <div class="card-body">
+                <p class="card-text">Colorful decorations and delicious food.</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Image 5 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery5.jpg" class="gallery-img" alt="Celebration Image 5">
+              <div class="card-body">
+                <p class="card-text">A festive gathering with music and dance.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Image 5 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery5.jpg" class="gallery-img" alt="Celebration Image 5">
+              <div class="card-body">
+                <p class="card-text">A festive gathering with music and dance.</p>
+              </div>
+            </div>
+          </div>
+    
+         
+    
+          <!-- Image 6 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery6.jpg" class="gallery-img" alt="Celebration Image 6">
+              <div class="card-body">
+                <p class="card-text">A cozy celebration with loved ones.</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Image 7 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery7.jpg" class="gallery-img" alt="Celebration Image 7">
+              <div class="card-body">
+                <p class="card-text">Delicious desserts and drinks.</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Image 8 -->
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery8.jpg" class="gallery-img" alt="Celebration Image 8">
+              <div class="card-body">
+                <p class="card-text">A joyful celebration with friends.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Image 9 -->
+            
+          <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery7.jpg" class="gallery-img" alt="Celebration Image 7">
+              <div class="card-body">
+                <p class="card-text">Delicious desserts and drinks.</p>
+              </div>
+            </div>
+          </div>
+           <!-- Image 5 -->
+           <div class="col-md-4 col-sm-6 gallery-item">
+            <div class="card">
+              <img src="images/gallery5.jpg" class="gallery-img" alt="Celebration Image 5">
+              <div class="card-body">
+                <p class="card-text">A festive gathering with music and dance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="container">
+          <div class="footer-cta pt-5 pb-5">
+              <div class="row">
+                  <div class="col-xl-4 col-md-4 mb-30">
+                      <div class="single-cta">
+                          <i class="fas fa-map-marker-alt"></i>
+                          <div class="cta-text">
+                              <h4>Find us</h4>
+                              <span>1010 Avenue, sw 54321, chandigarh</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-md-4 mb-30">
+                      <div class="single-cta">
+                          <i class="fas fa-phone"></i>
+                          <div class="cta-text">
+                              <h4>Call us</h4>
+                              <span>9876543210 0</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-md-4 mb-30">
+                      <div class="single-cta">
+                          <i class="far fa-envelope-open"></i>
+                          <div class="cta-text">
+                              <h4>Mail us</h4>
+                              <span>quicksnack@info.com</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="footer-content pt-5 pb-5">
+              <div class="row">
+                  <div class="col-xl-4 col-lg-4 mb-50">
+                      <div class="footer-widget">
+                          <div class="footer-logo">
+                              <a href="index.html"><img src="images/snackslogo.png" class="img-fluid" alt="logo"></a>
+                          </div>
+                          <div class="footer-text">
+                              <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor
+                                  incididuntut consec tetur adipisicing
+                                  elit,Lorem ipsum dolor sit amet.</p>
+                          </div>
+                          <div class="footer-social-icon">
+                              <span>Follow us</span>
+                              <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                              <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                              <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                      <div class="footer-widget">
+                          <div class="footer-widget-heading">
+                              <h3>Useful Links</h3>
+                          </div>
+                          <ul>
+                              <li><a href="index.html">Home</a></li>
+                              <li><a href="about.html">about</a></li>
+                              <li><a href="#">services</a></li>
+                              <li><a href="#">portfolio</a></li>
+                              <li><a href="contact.html">Contact</a></li>
+                              <li><a href="about.html">About us</a></li>
+                              <li><a href="#">Our Services</a></li>
+                              <li><a href="#">Expert Team</a></li>
+                              <li><a href="contact.html">Contact us</a></li>
+                              <li><a href="#">Latest News</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                      <div class="footer-widget">
+                          <div class="footer-widget-heading">
+                              <h3>Subscribe</h3>
+                          </div>
+                          <div class="footer-text mb-25">
+                              <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                          </div>
+                          <div class="subscribe-form">
+                              <form action="#">
+                                  <input type="text" placeholder="Email Address">
+                                  <button><i class="fab fa-telegram-plane"></i></button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="copyright-area">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                      <div class="copyright-text">
+                          <p>Copyright &copy; 2018, All Right Reserved <a
+                                  href="https://codepen.io/anupkumar92/">Anup</a></p>
+                      </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                      <div class="footer-menu">
+                          <ul>
+                              <li><a href="index.html">Home</a></li>
+                              <li><a href="#">Terms</a></li>
+                              <li><a href="#">Privacy</a></li>
+                              <li><a href="#">Policy</a></li>
+                              <li><a href="contact.html">Contact</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+
+ <!-- Bootstrap JS and dependencies -->
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+ <!-- Aos Animation Js Links -->
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script>
+     AOS.init();
+   </script>
+ <!-- Custom JS for Toggle Button Animation -->
+ <script src="script.js"></script>
+</body>
+
+</html>

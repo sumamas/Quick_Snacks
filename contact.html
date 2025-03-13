@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICK SNACKS</title>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Aos Animation Css Links -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Internal css Contact page -->
+    <style>
+        .contact-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 8%;
+            background-color: #2e2e2e;  
+        }
+
+        .contact-container .row {
+            display: flex;
+            justify-content: space-between;
+            /* width: 90%; */
+            /* max-width: 1100px;  */
+        }
+
+        .row section.col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row section.left {
+            flex-basis: 35%;
+            min-width: 320px;
+            margin-right: 60px;
+        }
+
+        .row section.right {
+            flex-basis: 60%;
+        }
+
+        section.left .contactTitle h2 {
+            position: relative;
+            font-size: 28px;
+            color: #ddd;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        section.left .contactTitle h2::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 1px;
+            background-color: #888;
+            top: 120%;
+            left: 0;
+        }
+
+        section.left .contactTitle h2::after {
+            content: '';
+            position: absolute;
+            width: 25%;
+            height: 3px;
+            background-color: #ff5e14;
+            top: calc(120% - 1px);
+            left: 0;
+        }
+
+        section.left .contactTitle p {
+            font-size: 17px;
+            color: #ccc;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            padding-bottom: 22px;
+        }
+
+        section.left .contactInfo {
+            margin-bottom: 16px;
+        }
+
+        .contactInfo .iconGroup {
+            display: flex;
+            align-items: center;
+            margin: 25px 0px;
+        }
+
+        .iconGroup .contact-icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #ff5e14;
+            border-radius: 50%;
+            margin-right: 20px;
+            position: relative;
+
+        }
+
+        .iconGroup .contact-icon i {
+            font-size: 20px;
+            color: #ddd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .iconGroup .details span {
+            display: block;
+            color: #888;
+            font-size: 18px;
+        }
+
+        .iconGroup .details span:nth-child(1) {
+            text-transform: uppercase;
+            color: #ccc;
+        }
+
+        section.left .socialMedia {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 22px 0px 20px;
+        }
+
+        .socialMedia a {
+            width: 35px;
+            height: 35px;
+            text-decoration: none;
+            text-align: center;
+            margin-right: 15px;
+            border-radius: 5px;
+            background-color: #ff5e14;
+            transition: 0.4s;
+        }
+
+        .socialMedia a i {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 35px;
+            border: 1px solid transparent;
+            transition-delay: 0.4s;
+        }
+
+        .socialMedia a:hover {
+            transform: translateY(-5px);
+            background-color: #2e2e2e;
+            color: #ff5e14;
+            border: 1px solid #ff5e14;
+        }
+
+        .socialMedia a:hover i {
+            color: #ff5e14;
+        }
+
+        /* Code for the right section (column) */
+
+        .row section.right .messageForm {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-top: 30px;
+        }
+
+        .row section.right .inputGroup {
+            margin: 18px 0px;
+            position: relative;
+        }
+
+        .messageForm .halfWidth {
+            flex-basis: 48%;
+        }
+
+        .messageForm .fullWidth {
+            flex-basis: 100%;
+        }
+
+        .messageForm input,
+        .messageForm textarea {
+            width: 100%;
+            font-size: 18px;
+            padding: 2px 0px;
+            background-color: #2e2e2e;
+            color: #ddd;
+            border: none;
+            border-bottom: 2px solid #666;
+            outline: none;
+        }
+
+        .messageForm textarea {
+            resize: none;
+            height: 220px;
+            display: block;
+        }
+
+        textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #ff5e14;
+            border-radius: 15px;
+        }
+
+        .inputGroup label {
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            color: #888;
+            font-size: 18px;
+            transition: 0.4s;
+            pointer-events: none;
+        }
+
+        .inputGroup:nth-child(4) label {
+            top: 2px;
+        }
+
+        .inputGroup input:focus~label,
+        .inputGroup textarea:focus~label,
+        .inputGroup input:valid~label,
+        .inputGroup textarea:valid~label {
+            transform: translateY(-30px);
+            font-size: 16px;
+        }
+
+        .inputGroup button {
+            padding: 8px 16px;
+            font-size: 18px;
+            background-color: #ff5e14;
+            color: #ddd;
+            border: 1px solid transparent;
+            border-radius: 25px;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.4s;
+        }
+
+        .inputGroup button:hover {
+            background-color: #2e2e2e;
+            color: #ff5e14;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #ff5e14;
+        }
+
+        @media(max-width: 1100px) {
+            .messageForm .halfWidth {
+                flex-basis: 100%;
+            }
+        }
+
+        @media(max-width: 900px) {
+            .contact-container .row {
+                flex-wrap: wrap;
+            }
+
+            .row section.left,
+            .row section.right {
+                flex-basis: 100%;
+                margin: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Go to top -->
+    <button id="backToTopBtn" class="" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Navbar -->
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-lg">
+            <div class="container-fluid">
+                <!-- Brand Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/snackslogo.png" alt="Logo">
+                </a>
+                <!-- Toggle Button for Off-Canvas -->
+                <button id="toggal" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <div class="hamburger" id="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </button>
+
+                <!-- Off-Canvas Sidebar -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel"><u>Menu</u></h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <!-- Navbar Links -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link nav_bar_active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="recipe.html">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="gallery.html">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                        <!-- Icons for Cart and Sign In -->
+                        <div class="d-flex align-items-center">
+
+                            <a href="Sign_in.html" style="text-decoration: none ; color: white;"> <button type="button"
+                                    class="btn btn-outline-light Regester" style="width: 108px; margin: 5px;">
+                                    <i class="fas fa-user"></i> Regester
+                                </button></a>
+                            <!-- Sign In Dropdown -->
+                            <!-- <div class="dropdown navbar_icon" >
+                                 <a class="text-white dropdown-toggle" href="Sign_in.html" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                     <i class="fas fa-user"></i> Sign In
+                                 </a>
+                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                     <li><a class="dropdown-item" href="#">Login</a></li>
+                                     <li><a class="dropdown-item" href="#">Register</a></li>
+                                 </ul>
+                             </div> -->
+                            <!-- Search button -->
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-light" type="submit"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+    <!--  Conatact Page-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 gallery_header">
+            <h1 class="text-center">HOME <span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+              </svg></span> OUR RECIPES</h1>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Google Maps Embed -->
+    <div class="container" style="margin-top: 200px;">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115733.93190607407!2d66.99500546337097!3d24.976817071576203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb339999415e0c3%3A0x36742eee0fd9c291!2sAptech%20Metro%20Star%20Gate!5e0!3m2!1sen!2s!4v1741282963429!5m2!1sen!2s"
+            width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <br><br><br>
+
+    <div class="contact-container container-fluid">
+        <main class="row">
+
+            <!--  *******   Left Section (Column) Starts   *******  -->
+
+            <section class="col left">
+
+                <!--  *******   Title Starts   *******  -->
+
+                <div class="contactTitle">
+                    <h2>Get In Touch</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                </div>
+
+                <!--  *******   Title Ends   *******  -->
+
+                <!--  *******   Contact Info Starts   *******  -->
+
+                <div class="contactInfo">
+
+                    <div class="iconGroup">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="details">
+                            <span>Phone</span>
+                            <span>+00 110 111 00</span>
+                        </div>
+                    </div>
+
+                    <div class="iconGroup">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="details">
+                            <span>Email</span>
+                            <span>name.tutorial@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="iconGroup">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="details">
+                            <span>Location</span>
+                            <span>X Street, Y Road, San Fransisco</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--  *******   Contact Info Ends   *******  -->
+
+                <!--  *******   Social Media Starts   *******  -->
+
+                <div class="socialMedia">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+
+                <!--  *******   Social Media Ends   *******  -->
+
+            </section>
+
+            <!--  *******   Left Section (Column) Ends   *******  -->
+
+            <!--  *******   Right Section (Column) Starts   *******  -->
+
+            <section class="col right">
+
+                <!--  *******   Form Starts   *******  -->
+
+                <form class="messageForm">
+
+                    <div class="inputGroup halfWidth">
+                        <input type="text" name="" required="required">
+                        <label>Your Name</label>
+                    </div>
+
+                    <div class="inputGroup halfWidth">
+                        <input type="email" name="" required="required">
+                        <label>Email</label>
+                    </div>
+
+                    <div class="inputGroup fullWidth">
+                        <input type="text" name="" required="required">
+                        <label>Subject</label>
+                    </div>
+
+                    <div class="inputGroup fullWidth">
+                        <textarea required="required"></textarea>
+                        <label>Say Something</label>
+                    </div>
+
+                    <div class="inputGroup fullWidth">
+                        <button>Send Message</button>
+                    </div>
+
+                </form>
+
+                <!--  *******   Form Ends   *******  -->
+            </section>
+
+            <!--  *******   Right Section (Column) Ends   *******  -->
+
+        </main>
+    </div>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>9876543210 0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>quicksnack@info.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="images/snackslogo.png" class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor
+                                    incididuntut consec tetur adipisicing
+                                    elit,Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="about.html">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2018, All Right Reserved <a
+                                    href="https://codepen.io/anupkumar92/">Anup</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Policy</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+ <!-- Bootstrap JS and dependencies -->
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+ <!-- Aos Animation Js Links -->
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script>
+     AOS.init();
+   </script>
+ <!-- Custom JS for Toggle Button Animation -->
+ <script src="script.js"></script>
+</body>
+
+</html>
