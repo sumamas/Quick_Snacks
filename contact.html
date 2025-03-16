@@ -14,8 +14,24 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- geolocationmap link-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <!-- Internal css Contact page -->
     <style>
+        #map {
+      height: 90vh;
+      width: 100%;
+    }
+    .location-message {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
         .contact-container {
             width: 100%;
             min-height: 100vh;
@@ -377,11 +393,10 @@
 
 
     <!-- Google Maps Embed -->
+
     <div class="container" style="margin-top: 200px;">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115733.93190607407!2d66.99500546337097!3d24.976817071576203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb339999415e0c3%3A0x36742eee0fd9c291!2sAptech%20Metro%20Star%20Gate!5e0!3m2!1sen!2s!4v1741282963429!5m2!1sen!2s"
-            width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="location-message" id="message">Getting your location...</div>
+<div id="map"></div>
     </div>
     <br><br><br>
 
@@ -629,6 +644,54 @@
    </script>
  <!-- Custom JS for Toggle Button Animation -->
  <script src="script.js"></script>
+ <!-- geomaplocatopn -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // Check if browser supports Geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    document.getElementById("message").innerText = "Geolocation is not supported by this browser.";
+  }
+
+  function showPosition(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    document.getElementById("message").innerText = `Your Location: Latitude ${lat.toFixed(4)}, Longitude ${lon.toFixed(4)}`;
+
+    // Initialize the map
+    const map = L.map('map').setView([lat, lon], 13);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add a marker at user's location
+    const marker = L.marker([lat, lon]).addTo(map);
+    marker.bindPopup("You are here!").openPopup();
+  }
+
+  function showError(error) {
+    let msg = "Location error!";
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        msg = "User denied the request for Geolocation.";
+        break;
+      case error.POSITION_UNAVAILABLE:
+        msg = "Location information is unavailable.";
+        break;
+      case error.TIMEOUT:
+        msg = "The request to get user location timed out.";
+        break;
+      case error.UNKNOWN_ERROR:
+        msg = "An unknown error occurred.";
+        break;
+    }
+    document.getElementById("message").innerText = msg;
+  }
+</script>
 </body>
 
 </html>
